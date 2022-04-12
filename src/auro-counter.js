@@ -16,29 +16,31 @@ import "focus-visible/dist/focus-visible.min.js";
 import styleCss from "./style-css.js";
 import styleCssFixed from './style-fixed-css.js';
 
+// Import auro-button
+import "@alaskaairux/auro-button";
+
 // See https://git.io/JJ6SJ for "How to document your components using JSDoc"
 /**
- * The auro-counter element provides users a way to ... (it would be great if you fill this out).
+ * The auro-counter element provides users a way to easily manipulate a quantity count for e-commerce purposes.
  *
- * @attr {Boolean} fixed - Uses fixed pixel values for element shape
- * @attr {String} cssClass - Applies designated CSS class to demo element - you want to delete me!
+ * @element auro-counter
+ * 
+ * @prop {Number} count - Use to keep quantity of counter value
+ * @prop 0
  */
 
 // build the component class
 class AuroCounter extends LitElement {
-  // constructor() {
-  //   super();
-  // }
+  constructor() {
+    super();
+  }
 
   // This function is to define props used within the scope of this component
   // Be sure to review  https://lit-element.polymer-project.org/guide/properties#reflected-attributes
   // to understand how to use reflected attributes with your property settings.
   static get properties() {
     return {
-      // ...super.properties,
-
-      // this property is DEMO ONLY! Please delete.
-      cssClass:   { type: String }
+      count: { type: Number }
     };
   }
 
@@ -55,12 +57,18 @@ class AuroCounter extends LitElement {
   // function that renders the HTML and CSS into  the scope of the component
   render() {
     return html`
-
-      <!-- this is demo code, DO NOT USE IN YOUR ELEMENT -->
-      <div class=${this.cssClass} tabindex="0">
-        <slot></slot>
-      </div>
+      <auro-button @click=${this.minusOne}>-</auro-button>
+      <span>${this.count}</span>
+      <auro-button @click=${this.plusOne}>+</auro-button>
     `;
+  }
+
+  plusOne() {
+    this.count += 1;
+  }
+
+  minusOne() {
+    this.count -= 1;
   }
 }
 

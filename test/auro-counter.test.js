@@ -2,14 +2,14 @@ import { fixture, html, expect } from '@open-wc/testing';
 import '../src/auro-counter.js';
 
 describe('auro-counter', () => {
-  it('sets the CSS class on auro-counter > div element', async () => {
-    const el = await fixture(html`
-      <auro-counter cssclass="testClass"></auro-counter>
-    `);
+  // it('sets the CSS class on auro-counter > div element', async () => {
+  //   const el = await fixture(html`
+  //     <auro-counter></auro-counter>
+  //   `);
 
-    const div = el.shadowRoot.querySelector('div');
-    expect(div.className).to.equal('testClass');
-  });
+  //   const div = el.shadowRoot.querySelector('div');
+  //   expect(div.className).to.equal('testClass');
+  // });
 
   it('auro-counter is accessible', async () => {
     const el = await fixture(html`
